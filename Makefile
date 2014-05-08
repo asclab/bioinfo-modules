@@ -1,6 +1,8 @@
 all:
-	find . -name 'setup.sh' -exec \{\} \;
+	find . -name setup.sh -exec ./basesetup.sh \{\} \;
 
 clean:
-	rm -rf */*/{bin,build,man}
+	rm -rf */*/bin
+	rm -rf */*/build
+	rm -rf */*/man
 	rm -rf modulefiles/*

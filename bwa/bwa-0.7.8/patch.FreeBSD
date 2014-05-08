@@ -1,0 +1,52 @@
+diff -rupN bwa-0.7.8/bwt_lite.c patched/bwt_lite.c
+--- bwa-0.7.8/bwt_lite.c	2014-03-31 12:30:39.000000000 -0700
++++ patched/bwt_lite.c	2014-05-08 11:51:25.716170476 -0700
+@@ -48,7 +48,7 @@ bwtl_t *bwtl_seq2bwtl(int len, const uin
+ 	}
+ 	{ // generate cnt_table
+ 		for (i = 0; i != 256; ++i) {
+-			u_int32_t j, x = 0;
++			uint32_t j, x = 0;
+ 			for (j = 0; j != 4; ++j)
+ 				x |= (((i&3) == j) + ((i>>2&3) == j) + ((i>>4&3) == j) + (i>>6 == j)) << (j<<3);
+ 			b->cnt_table[i] = x;
+diff -rupN bwa-0.7.8/bwtgap.c patched/bwtgap.c
+--- bwa-0.7.8/bwtgap.c	2014-02-25 13:20:01.000000000 -0800
++++ patched/bwtgap.c	2014-05-08 11:51:25.728170568 -0700
+@@ -58,7 +58,7 @@ static inline void gap_push(gap_stack_t 
+ 		q->stack = (gap_entry_t*)realloc(q->stack, sizeof(gap_entry_t) * q->m_entries);
+ 	}
+ 	p = q->stack + q->n_entries;
+-	p->info = (u_int32_t)score<<21 | i; p->k = k; p->l = l;
++	p->info = (uint32_t)score<<21 | i; p->k = k; p->l = l;
+ 	p->n_mm = n_mm; p->n_gapo = n_gapo; p->n_gape = n_gape;
+ 	p->n_ins = n_ins; p->n_del = n_del;
+ 	p->state = state; 
+diff -rupN bwa-0.7.8/bwtgap.h patched/bwtgap.h
+--- bwa-0.7.8/bwtgap.h	2014-02-25 13:20:01.000000000 -0800
++++ patched/bwtgap.h	2014-05-08 11:51:25.731170357 -0700
+@@ -5,9 +5,9 @@
+ #include "bwtaln.h"
+ 
+ typedef struct { // recursion stack
+-	u_int32_t info; // score<<21 | i
+-	u_int32_t n_mm:8, n_gapo:8, n_gape:8, state:2, n_seed_mm:6;
+-	u_int32_t n_ins:16, n_del:16;
++	uint32_t info; // score<<21 | i
++	uint32_t n_mm:8, n_gapo:8, n_gape:8, state:2, n_seed_mm:6;
++	uint32_t n_ins:16, n_del:16;
+ 	int last_diff_pos;
+ 	bwtint_t k, l; // (k,l) is the SA region of [i,n-1]
+ } gap_entry_t;
+diff -rupN bwa-0.7.8/bwtindex.c patched/bwtindex.c
+--- bwa-0.7.8/bwtindex.c	2014-02-25 13:20:01.000000000 -0800
++++ patched/bwtindex.c	2014-05-08 11:51:25.734170325 -0700
+@@ -96,7 +96,7 @@ bwt_t *bwt_pac2bwt(const char *fn_pac, i
+ 		err_fatal_simple("libdivsufsort is not compiled in.");
+ #endif
+ 	}
+-	bwt->bwt = (u_int32_t*)calloc(bwt->bwt_size, 4);
++	bwt->bwt = (uint32_t*)calloc(bwt->bwt_size, 4);
+ 	for (i = 0; i < bwt->seq_len; ++i)
+ 		bwt->bwt[i>>4] |= buf[i] << ((15 - (i&15)) << 1);
+ 	free(buf);
