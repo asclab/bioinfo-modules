@@ -1,0 +1,12 @@
+diff -rupN STAR_2.3.0e/Genome.cpp patched/Genome.cpp
+--- STAR_2.3.0e/Genome.cpp	2013-01-22 12:51:14.000000000 -0800
++++ patched/Genome.cpp	2014-05-08 13:30:48.803759650 -0700
+@@ -6,6 +6,7 @@
+ #include "streamFuns.h"
+ #include <time.h>
+ #include <cmath>
++#include <unistd.h>
+ 
+ #define SHM_sizeG 0
+ #define SHM_sizeSA 8
+Files STAR_2.3.0e/STAR and patched/STAR differ
