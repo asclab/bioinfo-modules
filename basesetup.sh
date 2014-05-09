@@ -5,6 +5,7 @@ VERSION="SETME"
 URL="SETME"
 DESCRIPTION=""
 SHORT=""
+AUTOCOPY="1"
 
 . $1
 
@@ -40,12 +41,15 @@ build
 echo "Done"
 cd ..
 
+if [ "$AUTOCOPY" == "1" ]; then
+
 if [ $(uname) == "FreeBSD" ]; then 
     find build -perm +u+x -not -type d -exec cp \{\} bin \;
 else
     find build -perm /u+x -not -type d -exec cp \{\} bin \;
 fi
 find build -name '*.1' -exec cp \{\} man/man1 \;
+fi
 
 cd $MODAPPSDIR
 mkdir -p modulefiles/$PROG
