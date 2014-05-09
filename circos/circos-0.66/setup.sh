@@ -9,6 +9,8 @@ build() {
 echo "Downloading"
 curl -OL http://www.circos.ca/distribution/circos-0.66.tgz
 tar xf circos-0.66.tgz
-ln -s circos-0.66/bin/* ../bin
+cd ../bin
+ln -s ../build/circos-0.66/bin/circos .
+cd ../build
 }
 
