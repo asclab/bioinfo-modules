@@ -37,6 +37,7 @@ mkdir -p man/man1
 cd build
 
 build
+echo "Done"
 cd ..
 
 if [ $(uname) == "FreeBSD" ]; then 
