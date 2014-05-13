@@ -6,6 +6,7 @@ URL="SETME"
 DESCRIPTION=""
 SHORT=""
 AUTOCOPY="1"
+MODFILEEXTRA=""
 
 . $1
 
@@ -73,7 +74,7 @@ conflict $PROG
 
 # for Tcl script use only
 set version "$VERSION"
-
+$MODFILEEXTRA
 prepend-path PATH $MODAPPSDIR/$PROG/$PROG-$VERSION/bin
 prepend-path MANPATH $MODAPPSDIR/$PROG/$PROG-$VERSION/man
 

@@ -1,5 +1,6 @@
 build/
 bin/
 man/
+lib/
 modulefiles/
 build.log
