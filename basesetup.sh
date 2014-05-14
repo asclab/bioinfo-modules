@@ -6,7 +6,8 @@ URL="SETME"
 DESCRIPTION=""
 SHORT=""
 AUTOCOPY="1"
-MODFILEEXTRA=""
+CUSTOM_MODFILE="0"
+MODFILE_EXTRA=""
 
 . $1
 
@@ -33,7 +34,7 @@ fi
 echo "Building $PROG-$VERSION"
 
 mkdir build
-mkdir bin
+mkdir -p bin
 mkdir -p man/man1
 
 cd build
@@ -54,6 +55,8 @@ fi
 
 cd $MODAPPSDIR
 mkdir -p modulefiles/$PROG
+
+if [ "$CUSTOM_MODFILE" == "0" ]; then
 cat <<EOF > modulefiles/$PROG/$VERSION
 #%Module1.0#####################################################################
 #
@@ -74,7 +77,7 @@ conflict $PROG
 
 # for Tcl script use only
 set version "$VERSION"
-$MODFILEEXTRA
+$MODFILE_EXTRA
 prepend-path PATH $MODAPPSDIR/$PROG/$PROG-$VERSION/bin
 prepend-path MANPATH $MODAPPSDIR/$PROG/$PROG-$VERSION/man
 
@@ -90,3 +93,6 @@ if [ module-info mode remove ] {
         puts stderr "$PROG version \$version unloaded."
 }
 EOF
+else
+custom_modfile
+fi
