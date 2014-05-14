@@ -2,6 +2,7 @@ build/
 bin/
 man/
 lib/
+lib64/
 modulefiles/
 build.log
 .cpan/
