@@ -26,8 +26,8 @@ if [ $? != 0 ]; then
 fi
 cd ../..
 echo "Installing modules..."
-sed -e "s#\$\$PERLHOME#$(echo $MODAPPSDIR/perl/perl-$VERSION | sed -e 's#\/#\\\/#g')#g" ../MyConfig-templ.pm > build/MyConfig.pm
-sed -e "s#\$\$PERLHOME\$\$#$MODAPPSDIR/perl/perl-$VERSION#" MyConfig-templ.pm > build/MyConfig.pm
+sed -e "s#\$\$PERLHOME#$(echo $MODAPPSDIR/perl/perl-$VERSION | sed -e 's#\/#\\\/#g')#g" MyConfig-templ.pm > build/MyConfig.pm
+#sed -e "s#\$\$PERLHOME\$\$#$MODAPPSDIR/perl/perl-$VERSION#" MyConfig-templ.pm > build/MyConfig.pm
 grep -v '^#' modules-list | while read line; do
 echo "$line"
 bin/cpan -j build/MyConfig.pm "$line"  >> build/build.log 2>&1

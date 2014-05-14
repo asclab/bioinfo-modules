@@ -4,3 +4,4 @@ man/
 lib/
 modulefiles/
 build.log
+.cpan/
