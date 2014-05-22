@@ -29,6 +29,8 @@ Sys::Hostname
 Text::Balanced
 Text::Format
 Time::HiRes
+Math::Bezier
+Set::IntSpan
 # Breakdancer
 Statistics::Descriptive
 Math::CDF
