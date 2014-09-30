@@ -9,4 +9,3 @@ diff -rupN STAR_2.3.0e/Genome.cpp patched/Genome.cpp
  
  #define SHM_sizeG 0
  #define SHM_sizeSA 8
-Files STAR_2.3.0e/STAR and patched/STAR differ
