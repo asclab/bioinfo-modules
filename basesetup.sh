@@ -1,4 +1,5 @@
 #!/bin/sh
+#!/usr/local/bin/bash
 
 PROG="SETME"
 VERSION="SETME"
